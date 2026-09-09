@@ -247,7 +247,7 @@ function CostChart({
     <section className="cost-chart" aria-label="Monthly provider cost comparison">
       <div className="chart-heading">
         <div>
-          <span>Live comparison</span>
+          <span>Cost comparison</span>
           <h3>Estimated monthly cost</h3>
         </div>
         <small>{country.currency} · lower is better</small>
@@ -434,7 +434,7 @@ export function Planner() {
         <nav className="header-nav" aria-label="Main navigation">
           <a href="#compare">Compare</a>
           <a href="#methodology">Methodology</a>
-          <span><i /> Pricing data live</span>
+          <span className="catalog-status">Catalog {CATALOG_DATE}</span>
         </nav>
         <div className="header-meta">
           <button
@@ -493,7 +493,7 @@ export function Planner() {
         <div className="hero-preview" aria-label="Live cost preview">
           <div className="preview-glow" />
           <div className="preview-topbar">
-            <span><i /> Live estimate</span>
+            <span>Estimate preview</span>
             <small>{country.currency} / month</small>
           </div>
           <div className="preview-range">
@@ -560,7 +560,7 @@ export function Planner() {
               <span className="panel-kicker">Workload designer</span>
               <strong>{mode === "guided" ? "Guided configuration" : "Advanced configuration"}</strong>
             </div>
-            <span className="completion"><i /> Live</span>
+              <span className="panel-state">Ready</span>
           </div>
           {mode === "guided" ? (
             <>
@@ -749,13 +749,19 @@ export function Planner() {
               </div>
             )}
 
-            <CostChart estimates={estimates} country={country} />
-
             <div className="assumption-strip">
               <span>{input.model.replace("-", " ")}</span>
               <span>{monthlyComputeSummary(input)}</span>
               <span>{input.egressGb.toLocaleString()} GB egress</span>
               <span>{country.currency} display</span>
+            </div>
+
+            <div className="ranking-heading">
+              <div>
+                <span>Detailed comparison</span>
+                <h3>Provider cost breakdown</h3>
+              </div>
+              <small>Open a provider to inspect its assumptions</small>
             </div>
 
             <div className="estimate-list">
@@ -769,6 +775,8 @@ export function Planner() {
                 />
               ))}
             </div>
+
+            <CostChart estimates={estimates} country={country} />
           </div>
         </section>
       </section>
