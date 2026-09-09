@@ -5,6 +5,10 @@ building and adjust understandable usage inputs; experienced users can enter
 compute, memory, request, storage, network, database, GPU, and availability
 requirements directly.
 
+## Live website
+
+[Open CloudScope](https://cloud-cost-planner.vercel.app/)
+
 The calculator currently compares normalized planning estimates for:
 
 - Amazon Web Services
